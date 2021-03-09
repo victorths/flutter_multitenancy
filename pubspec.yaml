@@ -1,0 +1,34 @@
+name: flutter_multitenancy
+description: A multitenancy solution for flutter projects.
+version: 0.0.1
+homepage: https://github.com/victorths/flutter_multitenancy
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+executables:
+  multitenancy: multitenancy
+  mty: multitenancy
+
+dependencies:
+  io: 
+  meta: ^1.2.3
+  recase: ^3.0.0
+  cli_menu: ^0.2.2
+  archive: ^2.0.13
+  ansicolor: ^1.0.2
+  process_run: ^0.11.2+1
+  http: ^0.12.2
+  path: ^1.7.0
+  yaml: ^2.2.1
+  version: ^1.2.0
+  intl: ^0.16.1
+  cli_dialog: ^0.3.3
+  json_ast: ^1.0.5
+  dart_style: '>=1.0.10 <2.0.0'
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
