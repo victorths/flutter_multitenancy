@@ -15,7 +15,7 @@ class SwitchTenantCommand extends BuildCommand {
   @override
   Future<void> execute() async {
     var args = List<String>.from(FlutterMultitenancy.arguments);
-    args.removeRange(0, 2);
+    args.removeAt(0);
     var tenants = args.where((element) => !element.startsWith('-')).toList();
     var buildFlags =
         args.where((flag) => acceptedFlags.contains(flag)).toList();
