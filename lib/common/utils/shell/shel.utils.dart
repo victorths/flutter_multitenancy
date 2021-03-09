@@ -28,7 +28,6 @@ class ShellUtils {
   }
 
   static Future<void> build(String type) async {
-    LogService.info('Generating splash …');
     await run('flutter', ['build', type, '--release'], verbose: true);
   }
 

@@ -15,21 +15,19 @@ class SwitchTenantCommand extends BuildCommand {
   @override
   Future<void> execute() async {
     var args = List<String>.from(FlutterMultitenancy.arguments);
-    args.removeAt(0);
+    args.removeRange(0, 2);
     var tenants = args.where((element) => !element.startsWith('-')).toList();
     var buildFlags =
-        flags.where((flag) => acceptedFlags.contains(flag)).toList();
+        args.where((flag) => acceptedFlags.contains(flag)).toList();
 
     if (tenants.length == 1) {
       var tenantName = tenants.first;
       LogService.info('Copying tenant "$tenantName" files …');
       await copyFiles(tenantName);
       await ShellUtils.pubGet();
-      if (buildFlags.isEmpty) {
-        buildFlags.forEach((flag) async {
-          await runFlag(flag);
-        });
-      }
+      buildFlags.forEach((flag) async {
+        await runFlag(flag);
+      });
     } else {
       for (var element in tenants) {
         var tenantName = element;

@@ -15,18 +15,16 @@ class BuildIosCommand extends BuildCommand {
     args.removeRange(0, 2);
     var tenants = args.where((element) => !element.startsWith('-')).toList();
     var buildFlags =
-        flags.where((flag) => acceptedFlags.contains(flag)).toList();
+        args.where((flag) => acceptedFlags.contains(flag)).toList();
 
     if (tenants.length == 1) {
       var tenantName = tenants.first;
       LogService.info('Copying tenant "$tenantName" files …');
       await copyFiles(tenantName);
       await ShellUtils.pubGet();
-      if (buildFlags.isEmpty) {
-        buildFlags.forEach((flag) async {
-          await runFlag(flag);
-        });
-      }
+      buildFlags.forEach((flag) async {
+        await runFlag(flag);
+      });
       LogService.info('Building "$tenantName" $commandName …');
       await ShellUtils.build(commandName);
     } else {
@@ -35,8 +33,8 @@ class BuildIosCommand extends BuildCommand {
         LogService.info('Copying tenant "$tenantName" files …');
         await copyFiles(tenantName);
         await ShellUtils.pubGet();
-        buildFlags.forEach((flag) async {
-          await runFlag(flag);
+        buildFlags.forEach((flag) {
+          runFlag(flag);
         });
         LogService.info('Building "$tenantName" $commandName …');
         await ShellUtils.build(commandName);
