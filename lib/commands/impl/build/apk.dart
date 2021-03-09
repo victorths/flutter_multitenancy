@@ -23,8 +23,8 @@ class BuildApkCommand extends BuildCommand {
       await copyFiles(tenantName);
       await ShellUtils.pubGet();
       if (buildFlags.isEmpty) {
-        buildFlags.forEach((flag) {
-          runFlag(flag);
+        buildFlags.forEach((flag) async {
+          await runFlag(flag);
         });
       }
       LogService.info('Building "$tenantName" $commandName …');

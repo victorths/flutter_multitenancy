@@ -14,6 +14,7 @@ final List<Command> commands = [
     ],
     ['b'],
   ),
+  SwitchTenantCommand(),
   HelpCommand(),
   VersionCommand(),
   UpdateCommand(),

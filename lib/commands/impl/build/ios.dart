@@ -23,8 +23,8 @@ class BuildIosCommand extends BuildCommand {
       await copyFiles(tenantName);
       await ShellUtils.pubGet();
       if (buildFlags.isEmpty) {
-        buildFlags.forEach((flag) {
-          runFlag(flag);
+        buildFlags.forEach((flag) async {
+          await runFlag(flag);
         });
       }
       LogService.info('Building "$tenantName" $commandName …');
@@ -35,8 +35,8 @@ class BuildIosCommand extends BuildCommand {
         LogService.info('Copying tenant "$tenantName" files …');
         await copyFiles(tenantName);
         await ShellUtils.pubGet();
-        buildFlags.forEach((flag) {
-          runFlag(flag);
+        buildFlags.forEach((flag) async {
+          await runFlag(flag);
         });
         LogService.info('Building "$tenantName" $commandName …');
         await ShellUtils.build(commandName);
