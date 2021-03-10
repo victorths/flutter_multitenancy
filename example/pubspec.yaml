@@ -6,16 +6,25 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  flutter_multitenancy:
-    path: ../
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  flutter_native_splash:
+  flutter_launcher_icons:
   flutter_test:
     sdk: flutter
 
+flutter_native_splash:
+  image: assets/images/icon.png
+  color: "FFFFFF"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
+  
 flutter:
   uses-material-design: true
   assets:

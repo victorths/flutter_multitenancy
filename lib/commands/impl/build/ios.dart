@@ -3,6 +3,7 @@ import 'package:flutter_multitenancy/common/utils/logger/log_utils.dart';
 import 'package:flutter_multitenancy/common/utils/shell/shel.utils.dart';
 import 'package:flutter_multitenancy/core/generator.dart';
 import 'package:flutter_multitenancy/functions/build/copy_files.dart';
+import 'package:flutter_multitenancy/functions/build/rename_file.dart';
 import 'package:flutter_multitenancy/functions/build/run_flag.dart';
 
 class BuildIosCommand extends BuildCommand {
@@ -27,6 +28,15 @@ class BuildIosCommand extends BuildCommand {
       });
       LogService.info('Building "$tenantName" $commandName …');
       await ShellUtils.build(commandName);
+      var today = DateTime.now();
+      var appName = tenantName.toUpperCase() +
+          "_" +
+          today.year.toString() +
+          "_" +
+          today.month.toString().padLeft(2, "0") +
+          today.day.toString().padLeft(2, "0");
+      await renameFile("./build/app/outputs/ios/app-release.apk",
+          "./build/app/outputs/ios/$appName.apk");
     } else {
       for (var element in tenants) {
         var tenantName = element;
@@ -38,6 +48,15 @@ class BuildIosCommand extends BuildCommand {
         });
         LogService.info('Building "$tenantName" $commandName …');
         await ShellUtils.build(commandName);
+        var today = DateTime.now();
+        var appName = tenantName.toUpperCase() +
+            "_" +
+            today.year.toString() +
+            "_" +
+            today.month.toString().padLeft(2, "0") +
+            today.day.toString().padLeft(2, "0");
+        await renameFile("./build/app/outputs/ios/app-release.apk",
+            "./build/app/outputs/ios/$appName.apk");
       }
     }
   }
