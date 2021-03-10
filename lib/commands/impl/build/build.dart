@@ -16,7 +16,7 @@ class BuildCommand extends Command {
   Future<void> execute() async {}
 
   @override
-  String get hint => Translation(LocaleKeys.hint_install).tr;
+  String get hint => Translation(LocaleKeys.hint_build).tr;
 
   @override
   bool validate() {

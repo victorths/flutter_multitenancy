@@ -34,6 +34,7 @@ class BuildAppbundleCommand extends BuildCommand {
           today.year.toString() +
           "_" +
           today.month.toString().padLeft(2, "0") +
+          "_" +
           today.day.toString().padLeft(2, "0");
       await renameFile("./build/app/outputs/bundle/release/app-release.aab",
           "./build/app/outputs/bundle/release/$appName.aab");
@@ -54,6 +55,7 @@ class BuildAppbundleCommand extends BuildCommand {
             today.year.toString() +
             "_" +
             today.month.toString().padLeft(2, "0") +
+            "_" +
             today.day.toString().padLeft(2, "0");
         await renameFile("./build/app/outputs/bundle/release/app-release.aab",
             "./build/app/outputs/bundle/release/$appName.aab");

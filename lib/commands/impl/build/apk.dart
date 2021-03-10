@@ -34,6 +34,7 @@ class BuildApkCommand extends BuildCommand {
           today.year.toString() +
           "_" +
           today.month.toString().padLeft(2, "0") +
+          "_" +
           today.day.toString().padLeft(2, "0");
       await renameFile("./build/app/outputs/flutter-apk/app-release.apk",
           "./build/app/outputs/flutter-apk/$appName.apk");
@@ -54,6 +55,7 @@ class BuildApkCommand extends BuildCommand {
             today.year.toString() +
             "_" +
             today.month.toString().padLeft(2, "0") +
+            "_" +
             today.day.toString().padLeft(2, "0");
         await renameFile("./build/app/outputs/flutter-apk/app-release.apk",
             "./build/app/outputs/flutter-apk/$appName.apk");
